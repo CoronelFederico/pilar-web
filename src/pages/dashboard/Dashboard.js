@@ -1,6 +1,6 @@
-import React,{useEffect} from "react";
-
+import React, { useEffect } from "react";
 import { Grid, Paper, Box } from "@mui/material";
+
 
 const Dashboard = () => {
   return (
