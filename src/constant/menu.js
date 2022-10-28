@@ -7,11 +7,15 @@ export const drawerMenu = [
     title: "pages",
     children: [
       {
+        title: "dashboard",
+        path: "/dashboard",
+      },
+      {
         title: "todo",
         path: "/todo",
       },
       {
-        title: "fetchList",
+        title: "fetchlist",
         path: "/fetch-list",
       },
     ],
