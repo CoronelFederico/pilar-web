@@ -5,12 +5,14 @@ const DELETE_TODO = "DELETE_TODO";
 
 // state inicial
 const stateInitial = {
+  pageTitle:'TODO',
   todo: [],
 };
 
 // selectores
 export const appSelector = {
   todo: (state) => state.todo,
+  pageTitle: (state) => state.pageTitle
 };
 
 // reducer
@@ -50,7 +52,6 @@ export const appReducer = (state = stateInitial, action) => {
       return state;
   }
 };
-
 
 // actions
 export const appActions = {
