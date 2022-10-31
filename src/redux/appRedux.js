@@ -5,6 +5,7 @@ const ADD_TODO = "ADD_TODO";
 const COMPLETE_TODO = "COMPLETE_TODO";
 const DELETE_TODO = "DELETE_TODO";
 const SET_PAGE_NAME = "SET_PAGE_NAME";
+const FILTER_COMPLETE = "FILTER_COMPLETE";
 
 // state inicial
 const stateInitial = {
@@ -46,6 +47,7 @@ export const appReducer = (state = stateInitial, action) => {
           return t;
         }),
       };
+
     case DELETE_TODO:
       return {
         ...state,
@@ -53,6 +55,12 @@ export const appReducer = (state = stateInitial, action) => {
       };
     default:
       return state;
+
+    case FILTER_COMPLETE:
+      return {
+        ...state,
+        todo: state.todo.filter((t) => t.id.completed='true'),
+      };
 
     case SET_PAGE_NAME:
       return {
@@ -78,6 +86,10 @@ export const appActions = {
   }),
   deleteTodo: (id) => ({
     type: DELETE_TODO,
+    id,
+  }),
+  filterComplete: (id) => ({
+    type: FILTER_COMPLETE,
     id,
   }),
 };
