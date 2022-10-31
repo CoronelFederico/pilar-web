@@ -9,10 +9,16 @@ import {
   CardMedia,
   Typography,
   CardActionArea,
-  Divider
+  Divider,
 } from "@mui/material";
 
+import { useSelector, useDispatch } from "react-redux";
+import { appSelector, appActions } from "../../redux/appRedux";
+
 const Dashboard = () => {
+  const dispatch = useDispatch();useEffect(() => {
+  dispatch(appActions.setPageTitle("DASHBOARD"));
+}, []);
   return (
     <Grid container spacing={3}>
       <Grid item xs={12}>

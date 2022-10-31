@@ -1,18 +1,21 @@
+import { Action } from "@remix-run/router";
+
 //Constants
 const ADD_TODO = "ADD_TODO";
 const COMPLETE_TODO = "COMPLETE_TODO";
 const DELETE_TODO = "DELETE_TODO";
+const SET_PAGE_NAME = "SET_PAGE_NAME";
 
 // state inicial
 const stateInitial = {
-  pageTitle:'TODO',
+  pageTitle: "TODO",
   todo: [],
 };
 
 // selectores
 export const appSelector = {
   todo: (state) => state.todo,
-  pageTitle: (state) => state.pageTitle
+  pageTitle: (state) => state.pageTitle,
 };
 
 // reducer
@@ -50,11 +53,21 @@ export const appReducer = (state = stateInitial, action) => {
       };
     default:
       return state;
+
+    case SET_PAGE_NAME:
+      return {
+        ...state,
+        pageTitle: action.title,
+      };
   }
 };
 
 // actions
 export const appActions = {
+  setPageTitle: (title) => ({
+    type: SET_PAGE_NAME,
+    title,
+  }),
   addTodo: (payload) => ({
     type: ADD_TODO,
     payload,
