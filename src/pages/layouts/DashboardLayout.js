@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef} from "react";
+import React, { useEffect, useState, useRef } from "react";
 import {
   AppBar,
   Toolbar,
@@ -16,17 +16,26 @@ import {
   Drawer,
   Collapse,
   Popover,
-  MenuItem as MenuItemMui
+  MenuItem as MenuItemMui,
+  Divider,
 } from "@mui/material";
-import { Outlet, useLocation, useNavigate,Link as RouterLink} from "react-router-dom";
+import {
+  Outlet,
+  useLocation,
+  useNavigate,
+  Link as RouterLink,
+} from "react-router-dom";
 import { drawerMenu, popMenu } from "../../constant/menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import { useSelector, useDispatch } from "react-redux";
+import { appSelector, appActions } from "../../redux/appRedux";
 
 const drawerWidth = 280;
 
 const MenuItem = ({ item }) => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { children, title, path } = item;
   const [open, setOpen] = useState(false);
@@ -173,7 +182,7 @@ const PopMenu = () => {
         onClick={() => setOpen(true)}
         ref={menuRef}
       >
-        <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+        <Avatar sx={{ width: 32, height: 32 }} src="https://th.bing.com/th/id/OIP.aBAOhhlNG6nZYbx0m2E6NwHaJ4?pid=ImgDet&rs=1"></Avatar>
       </IconButton>
       <MenuPopover
         open={open}
@@ -204,6 +213,7 @@ const PopMenu = () => {
 };
 
 function DashboardLayout() {
+  const pageTitle = useSelector(appSelector.pageTitle);
   const [open, setOpen] = useState(false);
   return (
     <Box sx={{ display: "flex" }}>
@@ -211,7 +221,7 @@ function DashboardLayout() {
         <Toolbar
           sx={{
             pr: "24px",
-            background:"red",
+            background: "red",
           }}
         >
           <Box>
@@ -220,6 +230,7 @@ function DashboardLayout() {
               onClick={() => setOpen(true)}
             ></MenuIcon>
           </Box>
+
           <Typography
             component="h1"
             variant="h6"
@@ -227,10 +238,10 @@ function DashboardLayout() {
             noWrap
             sx={{ flexGrow: 1 }}
           >
-            Pilar Tecno Web
+            Pilar Tecno Web / <Typography>{pageTitle}</Typography> 
           </Typography>
 
-          <PopMenu/>
+          <PopMenu />
         </Toolbar>
       </AppBar>
       <SideMenu open={open} onClose={() => setOpen(false)} />
