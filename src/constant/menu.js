@@ -1,15 +1,14 @@
 export const drawerMenu = [
   {
     title: "inicio",
-    path: "/",
+    path: "/dashboard",
+  },  {
+    title: "Formulario",
+    path: "/forms",
   },
   {
     title: "pages",
     children: [
-      {
-        title: "dashboard",
-        path: "/dashboard",
-      },
       {
         title: "todo",
         path: "/todo",

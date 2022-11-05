@@ -4,6 +4,7 @@ import NotFound from "./layouts/NotFound";
 import Todo from "./Todo/Todo";
 import FetchList from "./FetchList/FetchList";
 import Dashboard from "./dashboard/Dashboard";
+import Formularios from "./formularios/Formularios";
 
 const Routes = () => {
   return useRoutes([
@@ -11,18 +12,10 @@ const Routes = () => {
       path: "/",
       element: <DashboardLayout />,
       children: [
-        {
-          path: "dashboard",
-          element: <Dashboard/>,
-        },
-        {
-          path: "todo",
-          element: <Todo/>,
-        },
-        {
-          path: "fetch-list",
-          element: <FetchList />,
-        },
+        { path: "", element: <Dashboard /> },
+        { path: "todo", element: <Todo /> },
+        { path: "fetch-list", element: <FetchList /> },
+        { path: "forms", element: <Formularios /> },
       ],
     },
     { path: "/404", element: <NotFound /> },

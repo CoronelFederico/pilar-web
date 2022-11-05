@@ -10,6 +10,7 @@ import {
   Button,
   Checkbox,
   Typography,
+  Box
 } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { appSelector, appActions } from "../../redux/appRedux";
@@ -71,7 +72,7 @@ const Todo = () => {
       <Grid item md={12} xs={6}>
         <Card>
           <CardHeader title="Tareas" />
-          {/* <Box> {JSON.stringify(todo)} </Box> */}
+          <Box> {JSON.stringify(todo)} </Box>
           <CardContent>
             {todo.map((t, index) => (
               <Stack
